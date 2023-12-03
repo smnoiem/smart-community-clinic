@@ -11,12 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doctor_clinic', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
+
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
+
             $table->id();
+            $table->string('title', 100);
+            $table->string('status', 200);
+
+            $table->foreignId("visit_id")->constrained();
+            $table->foreignId("practitioner_id")->constrained();
             $table->foreignId("doctor_id")->constrained();
-            $table->foreignId("clinic_id")->constrained();
+
+            $table->timestamps();
         });
     }
 
@@ -25,11 +33,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('doctor_clinic', function (Blueprint $table) {
-            $table->dropForeign(['clinic_id']);
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->dropForeign(['visit_id']);
+            $table->dropForeign(['practitioner_id']);
             $table->dropForeign(['doctor_id']);
         });
 
-        Schema::dropIfExists('doctor_clinic');
+        Schema::dropIfExists('tickets');
     }
 };
