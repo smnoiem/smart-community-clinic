@@ -15,25 +15,26 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">Secret Key</label>
-                    <input type="password" class="form-control" name="password" id="password"
+                    <input type="password" class="form-control" name="secret_key" id="secret_key"
                         placeholder="enter your secret key">
                 </div>
 
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="admin">
+                        <input class="form-check-input" type="radio" name="role" id="admin" value="admin">
                         <label class="form-check-label" for="admin">
                             Admin
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="doctor">
+                        <input class="form-check-input" type="radio" name="role" id="doctor" value="doctor">
                         <label class="form-check-label" for="doctor">
                             Doctor
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="practitioner" checked>
+                        <input class="form-check-input" type="radio" name="role" id="practitioner" value="practitioner"
+                            checked>
                         <label class="form-check-label" for="practitioner">
                             Practitioner
                         </label>
