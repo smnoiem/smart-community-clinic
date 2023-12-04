@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Doctor;
+use App\Models\Practitioner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,20 +23,19 @@ class AuthenticationController extends Controller
 
         $user = match ($role) {
             'admin' => $user = new Admin,
-            'doctor' => $user = null,
-            'practitioner' => $user = null,
+            'doctor' => $user = new Doctor,
+            'practitioner' => $user = new Practitioner,
             default => $user = null
         };
 
         if($user) {
             $user = $user->where('email', $email)->where('secret_key', $secretKey)->firstOrFail();
 
-            // guard isn't created yet.
-            Auth::guard('admin')->login($user);
+            Auth::guard($role)->login($user);
 
-            $loggedInAdmin = auth('admin');
+            $request->session()->regenerate();
 
-            dd($loggedInAdmin);
+            redirect('/');
         }
         else {
             abort(404);

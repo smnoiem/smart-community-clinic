@@ -15,6 +15,9 @@
 <body>
     <header>
         <!-- nav -->
+        @auth
+            <h1>{{ HERE }}</h1>
+        @endauth
     </header>
 
     <main>
