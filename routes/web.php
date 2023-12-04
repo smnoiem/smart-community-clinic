@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd('here');
+    // redirect to proper page based on role
 })->middleware('auth');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
-Route::post('/login', function (Request $request) {
-    dd($request);
-    // authenticate
-});
+Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
