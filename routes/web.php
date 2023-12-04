@@ -16,9 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // redirect to proper page based on role
-})->middleware('auth');
+    if(auth('admin')) {
+        return redirect('/admin');
+    }
+    if(auth('doctor')) {
+        return redirect('/doctor');
+    }
+    if(auth('practitioner')) {
+        return redirect('/practitioner');
+    }
+    return redirect('/login');
+});
 
-Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login')->middleware('guest');
 
-Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
+Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate')->middleware('guest');
+
