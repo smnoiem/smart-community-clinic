@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\PractitionerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +41,6 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin'
 
 
 Route::resource('hospitals', HospitalController::class);
-Route::resource('clinics', HospitalController::class);
-Route::resource('doctors', HospitalController::class);
-Route::resource('practitioners', HospitalController::class);
+Route::resource('clinics', ClinicController::class);
+Route::resource('doctors', DoctorController::class);
+Route::resource('practitioners', PractitionerController::class);
