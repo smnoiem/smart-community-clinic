@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DoctorController extends Controller
 {
@@ -38,10 +39,11 @@ class DoctorController extends Controller
 
         $doctor->name = $request->input('name');
         $doctor->address = $request->input('address');
+        $doctor->secret_key = Str::random(30);
 
         $doctor->save();
 
-        return redirect(route('doctors.index'));
+        return redirect(route('doctors.show', ['secret_key' => $doctor->secret_key]));
     }
 
     /**
