@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 export function DialogDemo() {
   return (
@@ -52,33 +53,37 @@ export function DialogDemo() {
               Blood group
             </Label>
             <Input id="username" defaultValue="B+" className="col-span-3" />
+            
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
+            
+          
             <Label htmlFor="username" className="text-right">
+              
               Symtom description
             </Label>
-            <Input id="username" defaultValue="B+" className="col-span-3" />
+            <Textarea className="col-span-3" placeholder="Type your message here." />
           </div>
 
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Previous Medication
             </Label>
-            <Input id="username" defaultValue="B+" className="col-span-3" />
+            <Textarea className="col-span-3" placeholder="Type your message here." />
           </div>
 
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Previous Medical HIstory
             </Label>
-            <Input id="username" defaultValue="B+" className="col-span-3" />
+            <Textarea className="col-span-3" placeholder="Type your message here." />
           </div>
 
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Completed Test Report
             </Label>
-            <Input id="username" defaultValue="B+" className="col-span-3" />
+            <Textarea className="col-span-3" placeholder="Type your message here." />
           </div>
         </div>
         <DialogFooter>

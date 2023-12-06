@@ -24,9 +24,9 @@ function Page() {
           <div className="pb-5">
             <Card className="w-full h-full">
               <CardHeader>
-                <CardTitle>Medical History</CardTitle>
+                <CardTitle>Patients Awaiting Medical Treatment</CardTitle>
                 <CardDescription>
-                  Deploy your medical history to the world with a single click.
+                  See the patient List
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex justify-between">
@@ -56,7 +56,7 @@ function Page() {
 
           <Card className="w-full h-full">
             <CardHeader>
-              <CardTitle>Medical History</CardTitle>
+              <CardTitle>Treatment History</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col">
               <div className="flex justify-between">
