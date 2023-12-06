@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\HospitalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,9 @@ Route::get('/login', [AuthenticationController::class, 'login'])->name('login')-
 Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
+
+
+Route::resource('hospitals', HospitalController::class);
+Route::resource('clinics', HospitalController::class);
+Route::resource('doctors', HospitalController::class);
+Route::resource('practitioners', HospitalController::class);
