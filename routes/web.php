@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,4 @@ Route::get('/login', [AuthenticationController::class, 'login'])->name('login')-
 
 Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
