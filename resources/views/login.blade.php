@@ -1,6 +1,9 @@
-@extends('index')
+<x-master>
 
-@section('login_form')
+    <x-slot:title>
+        Login Page
+    </x-slot>
+
     <div class="d-flex justify-content-center mt-5">
         <div class="w-50">
             <form class="" method="POST" action="{{ route('login') }}">
@@ -46,4 +49,4 @@
             </form>
         </div>
     </div>
-@endsection
+</x-master>

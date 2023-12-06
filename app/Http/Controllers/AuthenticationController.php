@@ -35,7 +35,7 @@ class AuthenticationController extends Controller
 
             $request->session()->regenerate();
 
-            redirect('/');
+            return redirect('/');
         }
         else {
             abort(404);
