@@ -12,9 +12,14 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        $hospital = Hospital::all();
+        $hospitals = Hospital::paginate(2);
 
-        return response()->json(json_encode($hospital));
+        if(request()->wantsJson()) {
+            return response()->json(json_encode($hospitals));
+        }
+
+        return view('hospitals.index', ['hospitals' => $hospitals]);
+
     }
 
     /**
@@ -30,7 +35,14 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hospital = new Hospital;
+
+        $hospital->name = $request->input('name');
+        $hospital->address = $request->input('address');
+
+        $hospital->save();
+
+        return redirect(route('hospitals.index'));
     }
 
     /**
