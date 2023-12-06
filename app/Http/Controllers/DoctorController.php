@@ -39,11 +39,12 @@ class DoctorController extends Controller
 
         $doctor->name = $request->input('name');
         $doctor->address = $request->input('address');
+        $doctor->email = $request->input('email');
         $doctor->secret_key = Str::random(30);
 
         $doctor->save();
 
-        return redirect(route('doctors.show', ['secret_key' => $doctor->secret_key]));
+        return redirect(route('doctors.show', ['doctor' => $doctor->id, 'secret_key' => $doctor->secret_key]));
     }
 
     /**
