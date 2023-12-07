@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if(auth('admin')) {
+    if(auth('admin')->check()) {
         return redirect('/admin');
     }
-    if(auth('doctor')) {
+    if(auth('doctor')->check()) {
         return redirect('/doctor');
     }
-    if(auth('practitioner')) {
+    if(auth('practitioner')->check()) {
         return redirect('/practitioner');
     }
     return redirect('/login');
@@ -36,6 +36,8 @@ Route::get('/', function () {
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
+
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
 Route::get('admin/appoint/{doctor}', [AdminController::class, 'appoint_form'])->name('admin.appoint_form');

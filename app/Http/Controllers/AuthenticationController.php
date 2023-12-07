@@ -14,7 +14,8 @@ class AuthenticationController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:writer')->except('logout');
+        $this->middleware('guest:doctor')->except('logout');
+        $this->middleware('guest:practitioner')->except('logout');
     }
 
     public function login()
@@ -47,5 +48,16 @@ class AuthenticationController extends Controller
         else {
             abort(404);
         }
+    }
+
+    public function logout(Request $request) {
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect(route('index'));
     }
 }
