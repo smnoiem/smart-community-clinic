@@ -33,9 +33,9 @@ Route::get('/', function () {
     return redirect('/login');
 })->name('index');
 
-Route::get('/login', [AuthenticationController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
-Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate')->middleware('guest');
+Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
 Route::get('admin/appoint/{doctor}', [AdminController::class, 'appoint_form'])->name('admin.appoint_form');
