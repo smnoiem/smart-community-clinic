@@ -11,7 +11,7 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/random/?hospital" alt="Card image cap">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200/?hospital" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Hospital</h4>
                         <p class="card-text">Top hospitals</p>
@@ -32,7 +32,7 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/random/?doctor,surgery" alt="Card image cap">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200/?doctor,surgery" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Doctors</h4>
                         <p class="card-text">Doctor list</p>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/random/?clinic,nurse" alt="Card image cap">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200/?clinic,nurse" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Clinic</h4>
                         <p class="card-text">Top Clinics</p>
@@ -72,7 +72,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/random/?healthcare,medical assistant" alt="Card image cap">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200/?healthcare,medical assistant" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Practitioner</h4>
                         <p class="card-text">Top practitioners</p>

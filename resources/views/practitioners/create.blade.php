@@ -6,7 +6,7 @@
 
     <div class="ml-5 p-5">
 
-        <h1>Create practioner</h1>
+        <h1>Add practitioner profile</h1>
 
         <div class="w-75 ml-5">
             <form action="{{ route('practitioners.store') }}" method="POST">
@@ -19,9 +19,25 @@
                         class="form-control"
                         name="name"
                         id="name"
-                        placeholder="enter hospital name"
+                        placeholder="enter practitioner name"
                     />
                 </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        aria-describedby="emailHelpId"
+                        placeholder="abc@mail.com"
+                    />
+                    <small id="emailHelpId" class="form-text text-muted d-none"
+                        >Error message</small
+                    >
+                </div>
+
 
                 <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
