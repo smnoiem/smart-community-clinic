@@ -41,8 +41,12 @@ Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
+
 Route::get('admin/appoint/{doctor}', [AdminController::class, 'appoint_form'])->name('admin.appoint_form');
 Route::post('admin/appoint/{doctor}', [AdminController::class, 'appoint'])->name('admin.appoint')->middleware('auth:admin');
+
+Route::get('admin/practitioner/appoint/{practitioner}', [AdminController::class, 'practitioner_appoint_form'])->name('admin.practitioner.appoint_form');
+Route::post('admin/practitioner/appoint/{practitioner}', [AdminController::class, 'practitioner_appoint'])->name('admin.practitioner.appoint')->middleware('auth:admin');
 
 Route::get('/doctor', [DoctorDashboardController::class, 'index'])->middleware('auth:doctor');
 Route::get('doctor/appoint/{doctor}', [DoctorDashboardController::class, 'appoint_form'])->name('doctor.appoint_form');

@@ -47,13 +47,15 @@
                                                 <small>{{ $doctor->hospital->name }}</small>
                                             </div>
                                             <div class="col-md-6">
-                                                <a href="{{ route('admin.appoint_form', $doctor->id) }}">Change</a></div>
+                                                <a href="{{ route('admin.appoint_form', $doctor->id) }}">Change</a>
+                                            </div>
                                         </div>
                                     @else
                                         <div class="row">
                                             <div class="col-md-6"> <small>No yet appointed</small> </div>
                                             <div class="col-md-6">
-                                                <a href="{{ route('admin.appoint_form', $doctor->id) }}">Appoint</a></div>
+                                                <a href="{{ route('admin.appoint_form', $doctor->id) }}">Appoint</a>
+                                            </div>
                                         </div>
                                     @endif
                                 </li>
@@ -96,7 +98,27 @@
 
                         <ul class="list-group list-group-flush">
                             @foreach ($topPractitioners as $practitioner)
-                                <li class="list-group-item"><a href="{{ route('practitioners.show', $practitioner->id) }}">{{ $practitioner->name }}</a></li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('practitioners.show', $practitioner->id) }}">{{ $practitioner->name }}</a>
+
+                                    @if($practitioner->hospital)
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <small>{{ $practitioner->hospital->name }}</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a href="{{ route('admin.practitioner.appoint_form', $practitioner->id) }}">Change</a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-md-6"> <small>No yet appointed</small> </div>
+                                            <div class="col-md-6">
+                                                <a href="{{ route('admin.practitioner.appoint_form', $practitioner->id) }}">Appoint</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
 

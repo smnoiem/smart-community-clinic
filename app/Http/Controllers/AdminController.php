@@ -33,4 +33,18 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function practitioner_appoint_form(Request $request, Practitioner $practitioner) {
+
+        return view('admin.practitioner_appoint_form', ['hospitals' => Hospital::all(), 'practitioner' => $practitioner]);
+    }
+
+    public function practitioner_appoint(Request $request, Practitioner $practitioner) {
+
+        $hospital = Hospital::find($request->input('hospital'));
+        $practitioner->hospital()->associate($hospital);
+        $practitioner->update();
+
+        return redirect()->back();
+    }
 }
