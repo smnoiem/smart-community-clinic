@@ -38,6 +38,7 @@ Route::get('/login', [AuthenticationController::class, 'login'])->name('login')-
 Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
+Route::get('admin/appoint')->name('admin.appoint')->middleware('auth:admin');
 
 
 Route::resource('hospitals', HospitalController::class);
