@@ -90,7 +90,7 @@ function Page() {
               <div className="flex items-center space-x-4">
                 <Avatar>
                   <AvatarImage src="/avatars/01.png" />
-                  <AvatarFallback>OM</AvatarFallback>
+                  <AvatarFallback>P</AvatarFallback>
                 </Avatar>
                 <div>
                   <p className="text-sm font-medium leading-none">

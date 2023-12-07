@@ -46,16 +46,16 @@ function Page() {
         <CardHeader>
           <CardTitle>Medical History</CardTitle>
           <CardDescription>
-            Deploy your medical history to the world with a single click.
+            All Records
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col">
           <div className="pb-5">
             <Card className="w-full h-full">
               <CardHeader>
-                <CardTitle>Medical History</CardTitle>
+                <CardTitle>Patient List</CardTitle>
                 <CardDescription>
-                  Deploy your medical history to the world with a single click.
+                  Patients awaiting treatment.
                 </CardDescription>
               </CardHeader>
               {patientList.map((patient, index) => (

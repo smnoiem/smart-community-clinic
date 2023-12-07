@@ -43,7 +43,7 @@ function Page() {
       <form onSubmit={handleSubmit}>
         <Card className="border-0">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">web</CardTitle>
+            <CardTitle className="text-2xl text-center">Welcome To The Clinic</CardTitle>
             <CardDescription className="text-center">
               Good to see you again
             </CardDescription>
@@ -58,7 +58,7 @@ function Page() {
               <Input id="password" type="password" />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
+              <Label htmlFor="framework">Role</Label>
               <Select onValueChange={handleSelectChange}>
                 <SelectTrigger id="framework">
                   <SelectValue placeholder="Select" />
