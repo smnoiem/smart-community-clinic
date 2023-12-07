@@ -19,4 +19,9 @@ class Hospital extends Model
     {
         return $this->hasMany(Practitioner::class);
     }
+
+    public function clinics(): HasMany
+    {
+        return $this->hasMany(Clinic::class);
+    }
 }

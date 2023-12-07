@@ -47,4 +47,18 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function clinic_appoint_form(Request $request, Clinic $clinic) {
+
+        return view('admin.clinic_appoint_form', ['hospitals' => Hospital::all(), 'clinic' => $clinic]);
+    }
+
+    public function clinic_appoint(Request $request, Clinic $clinic) {
+
+        $hospital = Hospital::find($request->input('hospital'));
+        $clinic->hospital()->associate($hospital);
+        $clinic->update();
+
+        return redirect()->back();
+    }
 }

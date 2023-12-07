@@ -13,13 +13,13 @@ class PractitionerController extends Controller
      */
     public function index()
     {
-        $practitioner = Practitioner::paginate(2);
+        $practitioners = Practitioner::paginate(2);
 
         if(request()->wantsJson()) {
-            return response()->json(json_encode($practitioner));
+            return response()->json(json_encode($practitioners));
         }
 
-        return view('practitioner$practitioner.index', ['practitioner$practitioner' => $practitioner]);
+        return view('practitioners.index', ['practitioners' => $practitioners]);
     }
 
     /**

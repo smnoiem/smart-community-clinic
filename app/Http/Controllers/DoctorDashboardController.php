@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Clinic;
 use App\Models\Doctor;
 use App\Models\Hospital;
+use App\Models\Practitioner;
 use Illuminate\Http\Request;
 
 class DoctorDashboardController extends Controller
@@ -20,7 +21,7 @@ class DoctorDashboardController extends Controller
             $topClinics = $topClinics->where('hospital_id', $hospital->id)->latest()->get();
         }
 
-        $topPractitioners = new Clinic;
+        $topPractitioners = new Practitioner();
 
         if($hospital) {
             $topPractitioners = $topPractitioners->where('hospital_id', $hospital->id)->latest()->get();

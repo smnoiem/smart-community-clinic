@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clinic;
+use App\Models\Hospital;
 use Illuminate\Http\Request;
 
 class ClinicController extends Controller
@@ -26,7 +27,7 @@ class ClinicController extends Controller
      */
     public function create()
     {
-        return view('clinics.create');
+        return view('clinics.create', ['hospitals' => Hospital::all()]);
     }
 
     /**
@@ -38,6 +39,7 @@ class ClinicController extends Controller
 
         $clinic->name = $request->input('name');
         $clinic->address = $request->input('address');
+        $clinic->hospital()->associate($request->input('hospital'));
 
         $clinic->save();
 

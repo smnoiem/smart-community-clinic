@@ -28,6 +28,28 @@
                     <textarea class="form-control" name="address" id="address" rows="3"></textarea>
                 </div>
 
+                <div class="mb-3">
+
+                    <div class="mb-3">
+                        <label for="hospital" class="form-label">Hospital</label>
+                        <select
+                            class="form-select form-select-lg"
+                            name="hospital"
+                            id="hospital"
+                        >
+                            <option selected>Select one</option>
+
+                            @foreach ($hospitals as $hospital)
+                                <option value="{{ $hospital->id }}" >
+                                    {{ $hospital->name }} - {{ $hospital->address }}
+                                </option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
+                </div>
+
                 <button
                     type="submit"
                     class="btn btn-primary"

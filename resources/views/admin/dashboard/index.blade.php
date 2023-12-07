@@ -78,7 +78,26 @@
 
                         <ul class="list-group list-group-flush">
                             @foreach ($topClinics as $clinic)
-                                <li class="list-group-item"><a href="{{ route('clinics.show', $clinic->id) }}">{{ $clinic->name }}</a></li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('clinics.show', $clinic->id) }}">{{ $clinic->name }}</a>
+                                    @if($clinic->hospital)
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <small>{{ $clinic->hospital->name }}</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a href="{{ route('admin.clinic.appoint_form', $clinic->id) }}">Change</a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-md-6"> <small>No yet set</small> </div>
+                                            <div class="col-md-6">
+                                                <a href="{{ route('admin.clinic.appoint_form', $clinic->id) }}">Appoint</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
 
