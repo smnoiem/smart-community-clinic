@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PractitionerController;
 use Illuminate\Http\Request;
@@ -43,6 +44,9 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin'
 Route::get('admin/appoint/{doctor}', [AdminController::class, 'appoint_form'])->name('admin.appoint_form');
 Route::post('admin/appoint/{doctor}', [AdminController::class, 'appoint'])->name('admin.appoint')->middleware('auth:admin');
 
+Route::get('/doctor', [DoctorDashboardController::class, 'index'])->middleware('auth:doctor');
+Route::get('doctor/appoint/{doctor}', [DoctorDashboardController::class, 'appoint_form'])->name('doctor.appoint_form');
+Route::post('doctor/appoint/{doctor}', [DoctorDashboardController::class, 'appoint'])->name('doctor.appoint')->middleware('auth:doctor');
 
 Route::resource('hospitals', HospitalController::class);
 Route::resource('clinics', ClinicController::class);
