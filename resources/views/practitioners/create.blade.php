@@ -9,7 +9,7 @@
         <h1>Create practioner</h1>
 
         <div class="w-75 ml-5">
-            <form action="{{ route('practitioner.store') }}" method="POST">
+            <form action="{{ route('practitioners.store') }}" method="POST">
                 @csrf
                 @method('POST')
                 <div class="mb-3">
