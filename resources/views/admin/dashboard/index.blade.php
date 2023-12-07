@@ -47,13 +47,13 @@
                                                 <small>{{ $doctor->hospital->name }}</small>
                                             </div>
                                             <div class="col-md-6">
-                                                <a href="{{ route('admin.appoint', $doctor->id) }}">Change</a></div>
+                                                <a href="{{ route('admin.appoint_form', $doctor->id) }}">Change</a></div>
                                         </div>
                                     @else
                                         <div class="row">
                                             <div class="col-md-6"> <small>No yet appointed</small> </div>
                                             <div class="col-md-6">
-                                                <a href="{{ route('admin.appoint', $doctor->id) }}">Appoint</a></div>
+                                                <a href="{{ route('admin.appoint_form', $doctor->id) }}">Appoint</a></div>
                                         </div>
                                     @endif
                                 </li>

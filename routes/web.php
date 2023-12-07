@@ -31,14 +31,15 @@ Route::get('/', function () {
         return redirect('/practitioner');
     }
     return redirect('/login');
-});
+})->name('index');
 
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login')->middleware('guest');
 
 Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
-Route::get('admin/appoint')->name('admin.appoint')->middleware('auth:admin');
+Route::get('admin/appoint/{doctor}', [AdminController::class, 'appoint_form'])->name('admin.appoint_form');
+Route::post('admin/appoint/{doctor}', [AdminController::class, 'appoint'])->name('admin.appoint')->middleware('auth:admin');
 
 
 Route::resource('hospitals', HospitalController::class);

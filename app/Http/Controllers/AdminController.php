@@ -19,4 +19,18 @@ class AdminController extends Controller
 
         return view('admin.dashboard.index', compact('topHospitals', 'topDoctors', 'topClinics', 'topPractitioners'));
     }
+
+    public function appoint_form(Request $request, Doctor $doctor) {
+
+        return view('admin.appoint_form', ['hospitals' => Hospital::all(), 'doctor' => $doctor]);
+    }
+
+    public function appoint(Request $request, Doctor $doctor) {
+
+        $hospital = Hospital::find($request->input('hospital'));
+        $doctor->hospital()->associate($hospital);
+        $doctor->update();
+
+        return redirect()->back();
+    }
 }
