@@ -19,7 +19,7 @@
                         class="form-control"
                         name="name"
                         id="name"
-                        placeholder="enter hospital name"
+                        placeholder="enter clinic name"
                     />
                 </div>
 
