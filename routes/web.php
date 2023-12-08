@@ -84,6 +84,8 @@ Route::prefix('practitioner')
 
         Route::get('/queue', [PractitionerDashboardController::class, 'queue'])->name('queue');
 
+        Route::get('/collect_medical_history/{visit}', [PractitionerDashboardController::class, 'collect_medical_history'])->name('collect_medical_history');
+
 });
 
 

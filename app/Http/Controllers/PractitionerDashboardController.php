@@ -48,11 +48,15 @@ class PractitionerDashboardController extends Controller
 
         if(!$practitioner) abort(403);
 
-        $visits = Visit::where('practitioner_id', $practitioner->id)->get();
+        $visits = Visit::where('practitioner_id', $practitioner->id)->where('status', 'in_queue')->latest()->get();
 
         $clinic = $practitioner?->clinic;
 
         return view('practitioner.dashboard.queue', compact('practitioner', 'clinic', 'visits'));
+    }
+
+    public function collect_medical_history(Visit $visit) {
+        //
     }
 
 }
