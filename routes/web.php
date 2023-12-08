@@ -62,3 +62,7 @@ Route::resource('hospitals', HospitalController::class);
 Route::resource('clinics', ClinicController::class);
 Route::resource('doctors', DoctorController::class);
 Route::resource('practitioners', PractitionerController::class);
+
+Route::get('consultation/{ticket}', function() {
+    return "the great chatroom";
+})->name('consultation');

@@ -27,6 +27,8 @@ class DoctorDashboardController extends Controller
                             ->latest()
                             ->get();
 
+        // dd($tickets);
+
         $topClinics = new Clinic;
 
         if($hospital) {
@@ -65,6 +67,7 @@ class DoctorDashboardController extends Controller
 
         $clinic = Clinic::find($request->input('clinic'));
         $practitioner->clinic()->associate($clinic);
+        $practitioner->hospital()->associate($request->user()->hospital);
         $practitioner->update();
 
         return redirect()->back();
