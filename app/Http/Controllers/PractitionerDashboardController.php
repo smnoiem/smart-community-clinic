@@ -70,7 +70,7 @@ class PractitionerDashboardController extends Controller
 
         $medicalHistory->save();
 
-        return view('practitioner.dashboard.collect_medical_history', compact('visit'));
+        return redirect(route('practitioner.collect_medical_history', $visit->id));
     }
 
 }

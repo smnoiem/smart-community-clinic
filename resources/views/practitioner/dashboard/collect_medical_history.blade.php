@@ -39,7 +39,7 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">Symptom Value</label>
-                    <input type="number" class="form-control" name="value" id="value" aria-describedby="valueHelpId"
+                    <input type="text" class="form-control" name="value" id="value" aria-describedby="valueHelpId"
                         placeholder="enter value">
                 </div>
 

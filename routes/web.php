@@ -8,6 +8,7 @@ use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PractitionerController;
 use App\Http\Controllers\PractitionerDashboardController;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -101,6 +102,10 @@ Route::resource('hospitals', HospitalController::class);
 Route::resource('clinics', ClinicController::class);
 Route::resource('doctors', DoctorController::class);
 Route::resource('practitioners', PractitionerController::class);
+
+Route::post('consultation', function(Request $request, Visit $visit) {
+    return "the great chatroom";
+})->name('consultation.create');
 
 Route::get('consultation/{ticket}', function() {
     return "the great chatroom";
