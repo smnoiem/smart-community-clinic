@@ -8,6 +8,7 @@ use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PractitionerController;
 use App\Http\Controllers\PractitionerDashboardController;
+use App\Models\Ticket;
 use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -103,8 +104,21 @@ Route::resource('clinics', ClinicController::class);
 Route::resource('doctors', DoctorController::class);
 Route::resource('practitioners', PractitionerController::class);
 
-Route::post('consultation', function(Request $request, Visit $visit) {
-    return "the great chatroom";
+Route::get('consultation/{visit}', function(Request $request, Visit $visit) {
+
+    $ticket = new Ticket();
+
+    $ticket->title = $visit->patient_name . " (" . $visit->age . ")";
+    $ticket->status = 'pending';
+    $ticket->visit_id = $visit->id;
+    $ticket->practitioner_id = auth('practitioner')->user()?->id ?? $visit->practitioner->id;
+
+    if($ticket->save()) {
+        return redirect(route('consultation', $ticket->id));
+    }
+
+    return redirect(route('practitioner.queue'));
+
 })->name('consultation.create');
 
 Route::get('consultation/{ticket}', function() {
