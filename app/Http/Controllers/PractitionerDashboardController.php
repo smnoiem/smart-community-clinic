@@ -20,7 +20,14 @@ class PractitionerDashboardController extends Controller
     }
 
     public function enqueue_form() {
-        return view('practitioner.enqueue_form');
+
+        $practitioner = auth('practitioner')->user();
+
+        if(!$practitioner) abort(403);
+
+        $visits = Visit::where('practitioner_id', $practitioner->id)->where('status', 'in_queue')->latest()->get();
+
+        return view('practitioner.enqueue_form', compact('visits'));
     }
 
     public function enqueue(Request $request) {
@@ -53,7 +60,7 @@ class PractitionerDashboardController extends Controller
 
         $clinic = $practitioner?->clinic;
 
-        return view('practitioner.dashboard.queue', compact('practitioner', 'clinic', 'visits'));
+        return redirect(route('practitioner.enqueue'));
     }
 
     public function collect_medical_history(Visit $visit) {
