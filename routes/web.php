@@ -72,10 +72,20 @@ Route::post('doctor/appoint/{doctor}', [DoctorDashboardController::class, 'appoi
 
 
 
-Route::get('/practitioner', [PractitionerDashboardController::class, 'index'])->name('practitioner.index')->middleware('auth:practitioner');
+Route::prefix('practitioner')
+    ->name('practitioner.')
+    ->middleware('auth:practitioner')
+    ->group(function () {
 
-Route::get('practitioner/practitioner/appoint/{practitioner}', [DoctorDashboardController::class, 'practitioner_appoint_form'])->name('doctor.practitioner.appoint_form');
-Route::post('practitioner/practitioner/appoint/{practitioner}', [DoctorDashboardController::class, 'practitioner_appoint'])->name('doctor.practitioner.appoint')->middleware('auth:doctor');
+        Route::get('/', [PractitionerDashboardController::class, 'index'])->name('index');
+
+        Route::get('/enqueue', [PractitionerDashboardController::class, 'enqueue_form'])->name('enqueue_form');
+        Route::post('/enqueue', [PractitionerDashboardController::class, 'enqueue'])->name('enqueue');
+
+        Route::get('/queue', [PractitionerDashboardController::class, 'queue'])->name('queue');
+
+});
+
 
 Route::get('/doctor', [DoctorDashboardController::class, 'index'])->middleware('auth:doctor');
 Route::get('practitioner/appoint/{doctor}', [DoctorDashboardController::class, 'appoint_form'])->name('doctor.appoint_form');
