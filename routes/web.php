@@ -7,6 +7,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorDashboardController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PractitionerController;
+use App\Http\Controllers\PractitionerDashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::get('/', function () {
     return redirect('/login');
 })->name('index');
 
+
+
+
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('authenticate');
@@ -41,6 +45,9 @@ Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth:admin');
+
+
+
 
 Route::get('admin/appoint/{doctor}', [AdminController::class, 'appoint_form'])->name('admin.appoint_form');
 Route::post('admin/appoint/{doctor}', [AdminController::class, 'appoint'])->name('admin.appoint')->middleware('auth:admin');
@@ -51,12 +58,30 @@ Route::post('admin/practitioner/appoint/{practitioner}', [AdminController::class
 Route::get('admin/clinic/appoint/{clinic}', [AdminController::class, 'clinic_appoint_form'])->name('admin.clinic.appoint_form');
 Route::post('admin/clinic/appoint/{clinic}', [AdminController::class, 'clinic_appoint'])->name('admin.clinic.appoint')->middleware('auth:admin');
 
+
+
+
+
 Route::get('doctor/practitioner/appoint/{practitioner}', [DoctorDashboardController::class, 'practitioner_appoint_form'])->name('doctor.practitioner.appoint_form');
 Route::post('doctor/practitioner/appoint/{practitioner}', [DoctorDashboardController::class, 'practitioner_appoint'])->name('doctor.practitioner.appoint')->middleware('auth:doctor');
 
 Route::get('/doctor', [DoctorDashboardController::class, 'index'])->middleware('auth:doctor');
 Route::get('doctor/appoint/{doctor}', [DoctorDashboardController::class, 'appoint_form'])->name('doctor.appoint_form');
 Route::post('doctor/appoint/{doctor}', [DoctorDashboardController::class, 'appoint'])->name('doctor.appoint')->middleware('auth:doctor');
+
+
+
+
+Route::get('/practitioner', [PractitionerDashboardController::class, 'index'])->name('practitioner.index')->middleware('auth:practitioner');
+
+Route::get('practitioner/practitioner/appoint/{practitioner}', [DoctorDashboardController::class, 'practitioner_appoint_form'])->name('doctor.practitioner.appoint_form');
+Route::post('practitioner/practitioner/appoint/{practitioner}', [DoctorDashboardController::class, 'practitioner_appoint'])->name('doctor.practitioner.appoint')->middleware('auth:doctor');
+
+Route::get('/doctor', [DoctorDashboardController::class, 'index'])->middleware('auth:doctor');
+Route::get('practitioner/appoint/{doctor}', [DoctorDashboardController::class, 'appoint_form'])->name('doctor.appoint_form');
+Route::post('practitioner/appoint/{doctor}', [DoctorDashboardController::class, 'appoint'])->name('doctor.appoint')->middleware('auth:doctor');
+
+
 
 Route::resource('hospitals', HospitalController::class);
 Route::resource('clinics', ClinicController::class);
