@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MedicalHistory;
 use App\Models\Visit;
 use Illuminate\Http\Request;
 
@@ -56,7 +57,20 @@ class PractitionerDashboardController extends Controller
     }
 
     public function collect_medical_history(Visit $visit) {
-        //
+        return view('practitioner.dashboard.collect_medical_history', compact('visit'));
+    }
+
+    public function store_medical_history(Request $request, Visit $visit) {
+
+        $medicalHistory = new MedicalHistory();
+
+        $medicalHistory->visit_id = $visit->id;
+        $medicalHistory->symptom_type = $request->input('type');
+        $medicalHistory->symptom_value = $request->input('value');
+
+        $medicalHistory->save();
+
+        return view('practitioner.dashboard.collect_medical_history', compact('visit'));
     }
 
 }
